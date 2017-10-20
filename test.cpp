@@ -35,12 +35,12 @@ int main()
 	unsigned long long ts = clock();
 	cpp_course::persistent_set<string> a;
 	a.insert("aa");
-	a.insert("bb");
-	a.insert("ab");
+	a.insert("zz");
+	a.insert("az");
 	cpp_course::persistent_set<string> b(a);
 	b.erase(b.begin());
-	b.erase(b.find("bb"));
-	b.insert("cccc");
+	b.erase(b.find("zz"));
+	b.insert("cc");
 	for (auto x = a.begin(); x != a.end(); ++x)
 	{
 		//cout << *x << " ";
@@ -92,7 +92,7 @@ int main()
 		//cout << *x << " ";
 	}
 	//cout << endl;
-	c.erase(c.find("cccc"));
+	c.erase(c.find("cc"));
 	for (auto x = c.begin(); x != c.end(); ++x)
 	{
 		//cout << *x << " ";
