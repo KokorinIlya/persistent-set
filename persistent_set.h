@@ -157,7 +157,7 @@ namespace cpp_course
 
 		void get_path(std::vector<node*>& path, node* _root, T const &x) const noexcept;
 		void get_left_path(std::vector<node*>& path, node* _root) const noexcept;
-		PtrType<node> erase_impl(T const& x, node* _root);
+		PtrType<node> erase_impl(node* _root, T const& x);
 		node* copy_path(std::vector<node*> const& path);
 		base_node const* go_left(base_node const* _root) const noexcept;
 		node const* find_impl(node const* _root, T const& x) const noexcept;
@@ -389,15 +389,15 @@ namespace cpp_course
 	}
 
 	template <typename T, template <typename> class PtrType>
-	PtrType<typename persistent_set<T, PtrType>::node> persistent_set<T, PtrType>::erase_impl(T const& x, node* _root)
+	PtrType<typename persistent_set<T, PtrType>::node> persistent_set<T, PtrType>::erase_impl(node* _root, T const& x)
 	{
 		if (x < _root->data)
 		{
-			return PtrType<node>(new node(erase_impl(x, _root->left.get()), _root->right, _root->data));
+			return PtrType<node>(new node(erase_impl(_root->left.get(), x), _root->right, _root->data));
 		}
 		if (x > _root->data)
 		{
-			return PtrType<node>(new node(_root->left, erase_impl(x, _root->right.get()), _root->data));
+			return PtrType<node>(new node(_root->left, erase_impl(_root->right.get(), x), _root->data));
 		}
 		if (!_root->left && !_root->right)
 		{
@@ -499,6 +499,6 @@ namespace cpp_course
 			return;
 		}
 		--_size;
-		root.left = erase_impl(*it, root.left.get());
+		root.left = erase_impl(root.left.get(), *it);
 	}
 }
