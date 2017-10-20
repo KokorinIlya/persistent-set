@@ -68,7 +68,7 @@ int main()
 		//cout << *x << " ";
 	}
 	//cout << endl;
-	a.erase(a.find("ab"));
+	a.erase(a.find("az"));
 	a.insert("you");
 	for (auto x = a.begin(); x != a.end(); ++x)
 	{
