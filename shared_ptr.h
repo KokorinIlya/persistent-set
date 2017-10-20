@@ -5,6 +5,9 @@
 #include <type_traits>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <utility>
+#include <algorithm>
 
 namespace cpp_course
 {

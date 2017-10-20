@@ -3,7 +3,9 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <cstdlib>
 #include "linked_ptr.h"
+#include "shared_ptr.h"
 
 namespace cpp_course
 {

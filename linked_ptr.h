@@ -1,6 +1,8 @@
 #pragma once
 #include <stddef.h>
 #include <type_traits>
+#include <utility>
+#include <algorithm>
 
 namespace cpp_course
 {
