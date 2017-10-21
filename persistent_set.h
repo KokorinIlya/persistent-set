@@ -17,7 +17,6 @@ namespace cpp_course
 		struct iterator;
 
 		friend struct iterator;
-		friend struct persistent_set;
 
 		persistent_set() : root(PtrType<node>(nullptr), PtrType<node>(nullptr)), _size(0) {};
 
