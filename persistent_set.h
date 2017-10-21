@@ -122,7 +122,7 @@ namespace cpp_course
 			node(node&& other) noexcept(noexcept(T(std::move(other.data)))) : 
 				base_node(std::move(other)), data(std::move(other.data)) {}
 
-			node(PtrType<node> _left, PtrType<node> _right, T _data) :
+			node(PtrType<node> _left, PtrType<node> _right, T _data) noexcept(noexcept(T(std::move(_data)))) :
 				base_node(std::move(_left), std::move(_right)), data(std::move(_data)) {}
 
 			node& operator=(node const& other) noexcept
