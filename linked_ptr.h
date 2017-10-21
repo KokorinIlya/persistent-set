@@ -41,7 +41,7 @@ namespace cpp_course
 				}
 				else if (prev != nullptr && next == nullptr)
 				{
-					prev->next = next;
+					prev->next = nullptr;
 				}
 				else
 				{
@@ -95,7 +95,7 @@ namespace cpp_course
 		linked_ptr* prev;
 		linked_ptr* next;
 
-		void nokia() noexcept
+		void nokia() noexcept  
 		{
 			if (ptr == nullptr || (next == nullptr && prev == nullptr))
 			{
