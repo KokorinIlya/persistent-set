@@ -26,8 +26,8 @@ struct Other
 	Other(int _z) : z(_z) {};
 };
 
-template cpp_course::persistent_set<string>;
-template cpp_course::persistent_set<int>;
+template struct cpp_course::persistent_set<string>;
+template struct cpp_course::persistent_set<int>;
 
 int main()
 {
@@ -129,7 +129,11 @@ int main()
 	//cout << endl << "______________________" << endl;
 	cpp_course::persistent_set<int> e(d);
 	cpp_course::persistent_set<int> f(d);
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 1000000; i++)
+	{
+		d.erase(d.find(i));
+	}
+	while (!d.empty())
 	{
 		//cout << *d.begin() << " ";
 		d.erase(d.begin());
