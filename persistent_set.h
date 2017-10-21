@@ -78,8 +78,6 @@ namespace cpp_course
 		public:
 			friend struct persistent_set;
 
-			base_node() = delete;
-
 			base_node(base_node const& other) noexcept : left(other.left), right(other.right) {};
 
 			base_node(base_node&& other) noexcept: left(std::move(other.left)), right(std::move(other.right)) {};
@@ -117,13 +115,12 @@ namespace cpp_course
 		public:
 			friend struct persistent_set;
 
-			node() = delete;
-
 			explicit node(T _data) : base_node(PtrType<node>(nullptr), PtrType<node>(nullptr)), data(std::move(_data)) {}
 
-			node(node const& other) noexcept : base_node(other), data(other.data) {};
+			node(node const& other) noexcept(noexcept(T(other.data))) : base_node(other), data(other.data) {};
 
-			node(node&& other) noexcept: base_node(std::move(other)), data(std::move(other.data)) {}
+			node(node&& other) noexcept(noexcept(T(std::move(other.data)))) : 
+				base_node(std::move(other)), data(std::move(other.data)) {}
 
 			node(PtrType<node> _left, PtrType<node> _right, T _data) :
 				base_node(std::move(_left), std::move(_right)), data(std::move(_data)) {}
